@@ -8,7 +8,6 @@ async function fetchData(id) {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
     const data = await response.json();
-    console.log(data);
     createPokemon(data);
   } catch (e) {
     console.log("There was a problem fetching the pokemon data");
