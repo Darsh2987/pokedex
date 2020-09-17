@@ -16,31 +16,32 @@ async function fetchData(id) {
 
 function createPokemon(pokemon) {
   const pokemonGrid = document.querySelector("#pokemon-grid");
-  const pokemonEl = document.createElement("div");
-  pokemonEl.classList.add("pokemon-card");
+  const pokemonCardEl = document.createElement("div");
+  pokemonCardEl.classList.add("pokemon-card");
+  pokemonCardEl.classList.add(`pokemon-card-type-${pokemon.types[0].type.name}`);
 
   const pokemonCard = `
-      <div class="pokemon-card-img"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png" width="10%"></div>
+      <div class="pokemon-card-img"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png"></div>
       <div class="pokemon-card-name">${pokemon.name}</div>
       <div class="pokemon-card-type">Type: 
         <ul>${pokemon.types
           .map((el) => {
-            return `<li class="pokemon-type-${el.type.name}">${el.type.name}</li>`;
+            return `<li class="pokemon-type pokemon-type-${el.type.name}">${el.type.name}</li>`;
           })
           .join("")}
         </ul>
       </div>
       <div class="pokemon-card-height-and-weight">
         <ul>
-          <li>weight: ${pokemon.weight / 10}kg</li>
-          <li>height: ${pokemon.height / 10}m</li>
+          <li class="pokemon-weight">weight: ${pokemon.weight / 10}kg</li>
+          <li class="pokemon-height">height: ${pokemon.height / 10}m</li>
         </ul>
       </div>
       <div class="pokemon-card-number">#${pokemon.id}</div>
   `;
 
-  pokemonEl.innerHTML = pokemonCard;
-  pokemonGrid.appendChild(pokemonEl);
+  pokemonCardEl.innerHTML = pokemonCard;
+  pokemonGrid.appendChild(pokemonCardEl);
 }
 
 fetchPokemons();
