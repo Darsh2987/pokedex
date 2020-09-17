@@ -22,11 +22,14 @@ function createPokemon(pokemon) {
   const pokemonCard = `
       <div class="pokemon-card-img"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png" width="10%"></div>
       <div class="pokemon-card-name">${pokemon.name}</div>
-      <div class="pokemon-card-type">Type: ${pokemon.types
-        .map((el) => {
-          return el.type.name;
-        })
-        .join(", ")}</div>
+      <div class="pokemon-card-type">Type: 
+        <ul>${pokemon.types
+          .map((el) => {
+            return `<li class="pokemon-type-${el.type.name}">${el.type.name}</li>`;
+          })
+          .join("")}
+        </ul>
+      </div>
       <div class="pokemon-card-height-and-weight">
         <ul>
           <li>weight: ${pokemon.weight / 10}kg</li>
