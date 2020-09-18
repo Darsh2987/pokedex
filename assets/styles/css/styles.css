@@ -6,7 +6,6 @@
 }
 
 body {
-  padding: 2rem;
   background-image: linear-gradient(102deg, #7de3c9, #977de3, #e37d97, #c9e37d);
 }
 
@@ -76,6 +75,30 @@ li {
 
 .pokemon-card-type-ghost {
   background-color: #a936f1;
+}
+
+@font-face {
+  font-family: "pokemon";
+  src: url("../../fonts/pokemon_solid-webfont.woff") format("woff2"), url("../../fonts/pokemon_solid-webfont.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+header {
+  background-color: #ef5350;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-family: "pokemon", sans-serif;
+  font-size: 3.5rem;
+  text-align: center;
+  letter-spacing: 1px;
+  color: #faca48;
+  -webkit-text-stroke: 2px #3b62a3;
+}
+
+.pokemon-grid {
+  margin: 2rem;
 }
 
 @media screen and (min-width: 400px) {
