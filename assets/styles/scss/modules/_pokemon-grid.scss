@@ -1,3 +1,27 @@
-.pokemon-grid {
-  margin-top: 2rem;
+@media screen and (min-width: 400px) {
+  .pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 4rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(5, 1fr);
+    margin: 0 8rem;
+  }
 }
