@@ -1,5 +1,5 @@
 const fetchPokemons = async () => {
-  for (let i = 1; i <= 150; i++) {
+  for (let i = 1; i <= 151; i++) {
     await fetchData(i);
   }
 };
@@ -23,12 +23,12 @@ function createPokemon(pokemon) {
   const pokemonCard = `
       <div class="pokemon-card-img"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png"></div>
       <div class="pokemon-card-name">${pokemon.name}</div>
-      <div class="pokemon-card-type">Type: 
-        <ul>${pokemon.types
+      <div class="pokemon-card-type"> 
+        <ul>Type: ${pokemon.types
           .map((el) => {
             return `<li class="pokemon-type pokemon-type-${el.type.name}">${el.type.name}</li>`;
           })
-          .join("")}
+          .join(", ")}
         </ul>
       </div>
       <div class="pokemon-card-height-and-weight">
