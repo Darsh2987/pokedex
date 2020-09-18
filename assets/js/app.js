@@ -1,5 +1,15 @@
+let startNum = 1;
+let endNum = 151;
+
+document.querySelector("#second-gen-btn").addEventListener("click", () => {
+  startNum = 152;
+  endNum = 251;
+});
+
+console.log(startNum, endNum);
+
 const fetchPokemons = async () => {
-  for (let i = 1; i <= 151; i++) {
+  for (let i = startNum; i <= endNum; i++) {
     await fetchData(i);
   }
 };
