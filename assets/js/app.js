@@ -2,13 +2,6 @@ window.addEventListener("load", () => {
   let startNum = 1;
   let endNum = 151;
 
-  document.querySelector("#second-gen-btn").addEventListener("click", () => {
-    startNum = 152;
-    endNum = 251;
-  });
-
-  console.log(startNum, endNum);
-
   const fetchPokemons = async () => {
     for (let i = startNum; i <= endNum; i++) {
       await fetchData(i);
@@ -24,6 +17,13 @@ window.addEventListener("load", () => {
       console.log("There was a problem fetching the pokemon data");
     }
   }
+
+  document.querySelector("#second-gen-btn").addEventListener("click", () => {
+    startNum = 152;
+    endNum = 251;
+    document.querySelector("#pokemon-grid").innerHTML = "";
+    fetchPokemons();
+  });
 
   function createPokemon(pokemon) {
     const pokemonGrid = document.querySelector("#pokemon-grid");
