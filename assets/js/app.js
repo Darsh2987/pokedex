@@ -6,6 +6,8 @@ window.addEventListener("load", () => {
     for (let i = startNum; i <= endNum; i++) {
       await fetchData(i);
     }
+
+    revealPokemonCards();
   };
 
   async function fetchData(id) {
@@ -17,13 +19,6 @@ window.addEventListener("load", () => {
       console.log("There was a problem fetching the pokemon data");
     }
   }
-
-  document.querySelector("#second-gen-btn").addEventListener("click", () => {
-    startNum = 152;
-    endNum = 251;
-    document.querySelector("#pokemon-grid").innerHTML = "";
-    fetchPokemons();
-  });
 
   function createPokemon(pokemon) {
     const pokemonGrid = document.querySelector("#pokemon-grid");
@@ -53,6 +48,33 @@ window.addEventListener("load", () => {
 
     pokemonCardEl.innerHTML = pokemonCard;
     pokemonGrid.appendChild(pokemonCardEl);
+  }
+
+  document.querySelector("#first-gen-btn").addEventListener("click", () => {
+    startNum = 1;
+    endNum = 151;
+    document.querySelector("#pokemon-grid").innerHTML = "";
+    fetchPokemons();
+  });
+
+  document.querySelector("#second-gen-btn").addEventListener("click", () => {
+    startNum = 152;
+    endNum = 251;
+    document.querySelector("#pokemon-grid").innerHTML = "";
+    fetchPokemons();
+  });
+
+  function revealPokemonCards() {
+    let revealPokemonCards = document.querySelectorAll(".pokemon-card");
+
+    window.addEventListener("scroll", () => {
+      revealPokemonCards.forEach((el) => {
+        let scrollPercent = (el.getBoundingClientRect().y / window.innerHeight) * 100;
+        if (scrollPercent < 75) {
+          el.classList.add("reveal-pokemon-card");
+        }
+      });
+    });
   }
 
   fetchPokemons();

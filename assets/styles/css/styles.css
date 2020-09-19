@@ -197,5 +197,13 @@ header h1 {
     margin: 0 0 1rem 0;
   }
 }
+.pokemon-card {
+  opacity: 0;
+  transition: all 1.5s ease-in-out;
+}
+
+.reveal-pokemon-card {
+  opacity: 1;
+}
 
 /*# sourceMappingURL=styles.css.map */
