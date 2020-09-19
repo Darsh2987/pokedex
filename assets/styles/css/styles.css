@@ -126,7 +126,7 @@ li {
   margin: 0.5rem;
   padding: 0.5rem;
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
   -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
