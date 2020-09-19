@@ -2,6 +2,7 @@ window.addEventListener("load", () => {
   let startNum = 1;
   let endNum = 151;
 
+  // fetchPokemons async function with a loop - when called the loop will pass a number to the fecthData function which is used for the fecth url end point
   const fetchPokemons = async () => {
     for (let i = startNum; i <= endNum; i++) {
       await fetchData(i);
@@ -10,6 +11,7 @@ window.addEventListener("load", () => {
     revealPokemonCards();
   };
 
+  // fetchData function - gets the data from the poke api, the loop from the "fetchPokemons" function will pass in the number for the fecth url end point
   async function fetchData(id) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -20,6 +22,7 @@ window.addEventListener("load", () => {
     }
   }
 
+  // create pokemon function - once the data has been fetched from the api, this function will create the HTML using the data
   function createPokemon(pokemon) {
     const pokemonGrid = document.querySelector("#pokemon-grid");
     const pokemonCardEl = document.createElement("div");
@@ -50,6 +53,7 @@ window.addEventListener("load", () => {
     pokemonGrid.appendChild(pokemonCardEl);
   }
 
+  // click events for the 1st generation button
   document.querySelector("#first-gen-btn").addEventListener("click", () => {
     startNum = 1;
     endNum = 151;
@@ -57,6 +61,7 @@ window.addEventListener("load", () => {
     fetchPokemons();
   });
 
+  // click events for the 2nd generation button
   document.querySelector("#second-gen-btn").addEventListener("click", () => {
     startNum = 152;
     endNum = 251;
@@ -64,6 +69,7 @@ window.addEventListener("load", () => {
     fetchPokemons();
   });
 
+  // click events for the 3nd generation button
   document.querySelector("#third-gen-btn").addEventListener("click", () => {
     startNum = 252;
     endNum = 386;
@@ -71,6 +77,7 @@ window.addEventListener("load", () => {
     fetchPokemons();
   });
 
+  // function to reveal pokemoncards on load and on scroll event
   function revealPokemonCards() {
     let revealPokemonCards = document.querySelectorAll(".pokemon-card");
 
@@ -90,4 +97,5 @@ window.addEventListener("load", () => {
   }
 
   fetchPokemons();
+  generationButtons();
 });
