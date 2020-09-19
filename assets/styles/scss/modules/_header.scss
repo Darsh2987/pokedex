@@ -40,4 +40,10 @@
   -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.header ul li:hover {
+  background-color: #faca48;
+  transition: background-color 0.5s ease-in-out;
 }

@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: linear-gradient(102deg, #7de3c9, #977de3, #e37d97, #c9e37d);
+  background-image: linear-gradient(92deg, #7de3c9, #977de3, #e37d97, #c9e37d);
 }
 
 li {
@@ -118,6 +118,12 @@ li {
   -webkit-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.header ul li:hover {
+  background-color: #faca48;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .pokemon-grid {
