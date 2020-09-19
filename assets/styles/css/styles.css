@@ -77,6 +77,19 @@ li {
   background-color: #a936f1;
 }
 
+.pokemon-card-type-steel {
+  background-color: #87898c;
+}
+
+.pokemon-card-type-dark {
+  background-color: #1c2f2f;
+  color: #fff;
+}
+
+.pokemon-card-type-dark .pokemon-card-number {
+  color: #000;
+}
+
 @font-face {
   font-family: "pokemon";
   src: url("../../fonts/pokemon_solid-webfont.woff") format("woff2"), url("../../fonts/pokemon_solid-webfont.woff2") format("woff");
