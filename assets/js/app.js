@@ -64,6 +64,13 @@ window.addEventListener("load", () => {
     fetchPokemons();
   });
 
+  document.querySelector("#third-gen-btn").addEventListener("click", () => {
+    startNum = 252;
+    endNum = 386;
+    document.querySelector("#pokemon-grid").innerHTML = "";
+    fetchPokemons();
+  });
+
   function revealPokemonCards() {
     let revealPokemonCards = document.querySelectorAll(".pokemon-card");
 
