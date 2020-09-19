@@ -99,5 +99,9 @@ window.addEventListener("load", () => {
     });
   }
 
+  document.querySelector(".go-to-top").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
   fetchPokemons();
 });

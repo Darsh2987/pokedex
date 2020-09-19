@@ -239,6 +239,38 @@ li {
     margin: 0 0 1rem 0;
   }
 }
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  padding: 1rem;
+}
+
+.go-to-top {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.go-to-top:hover {
+  background-color: #ef5350;
+}
+
+.go-to-top:hover .fa-angle-up {
+  color: #fff;
+}
+
+.fa-angle-up:hover {
+  color: #fff;
+}
+
 .pokemon-card {
   opacity: 0;
   transition: all 1.5s ease-in-out;
