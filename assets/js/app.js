@@ -67,13 +67,18 @@ window.addEventListener("load", () => {
   function revealPokemonCards() {
     let revealPokemonCards = document.querySelectorAll(".pokemon-card");
 
-    window.addEventListener("scroll", () => {
+    function reveal() {
       revealPokemonCards.forEach((el) => {
         let scrollPercent = (el.getBoundingClientRect().y / window.innerHeight) * 100;
         if (scrollPercent < 75) {
           el.classList.add("reveal-pokemon-card");
         }
       });
+    }
+    reveal();
+
+    window.addEventListener("scroll", () => {
+      reveal();
     });
   }
 
