@@ -1,3 +1,4 @@
+import "../styles/css/styles.css";
 window.addEventListener("load", () => {
   const pokemonGrid = document.querySelector("#pokemon-grid");
 
