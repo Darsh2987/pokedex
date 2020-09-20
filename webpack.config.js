@@ -39,6 +39,7 @@ module.exports = {
             options: {
               name: "[name].[ext]",
               outputPath: "./images",
+              publicPath: "images",
             },
           },
         ],
@@ -51,6 +52,7 @@ module.exports = {
             options: {
               name: "[name].[ext]",
               outputPath: "./fonts",
+              publicPath: "fonts",
             },
           },
         ],
