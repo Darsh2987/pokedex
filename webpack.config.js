@@ -7,7 +7,7 @@ module.exports = {
   entry: "./assets/js/app.js",
   output: {
     filename: "bundled-script.js",
-    path: path.resolve(__dirname, "dist/assets"),
+    path: path.resolve(__dirname, "dist"),
   },
   optimization: {
     minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
@@ -15,6 +15,10 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "bundled-styles.css",
+    }),
+    new HtmlWebpackPlugin({
+      title: "index",
+      template: "src/index.html",
     }),
   ],
   module: {
