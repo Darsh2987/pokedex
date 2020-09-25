@@ -5,7 +5,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./assets/js/app.js",
+  entry: "./src/assets/js/app.js",
   output: {
     filename: "bundled-script.js",
     path: path.resolve(__dirname, "dist"),
