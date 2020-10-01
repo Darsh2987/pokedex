@@ -1,26 +1,34 @@
 import "../styles/css/styles.css";
 window.addEventListener("load", () => {
   const pokemonGrid = document.querySelector("#pokemon-grid");
-  let pokemonList = [];
 
   let startNum = 1;
   let endNum = 151;
 
-  // Create observer to watch element pass the fold
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  /**
+   * @description - The job of the intersection observer is to tell us when elements have come above the fold.
+   * Only load the data and render it when it's in view
+   */
+  const observer = new IntersectionObserver(async (entries) => {
+    entries.forEach(async entry => {
+      if (entry.isIntersecting && entry.target.dataset.loaded !== true) {
+        // We know the ID of the element which is now in view
         const id = entry.target.dataset.id;
-        entry.target.innerHTML = fillPokemonData(id);
+        // Grab data from API first using the ID
+        const pokeData = await fetchData(id);        
+        entry.target.classList.add('visible', `pokemon-card-type-${pokeData.types[0].type.name}`);
+        entry.target.innerHTML = fillPokemonData(pokeData);
+        entry.target.dataset.loaded = true;
       }
     });
   });
 
-  const fillPokemonData = (id) => {
-    // Grab pokemon object from our list indexed by ID
-    let pokemon = pokemonList[id];
-
+  /**
+   * 
+   * @param {object} pokemon 
+   * @description - Generate html for the pokemon object recieved
+   */
+  const fillPokemonData = (pokemon) => {
     return `
       <div class="pokemon-card-img"><img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png"></div>
       <div class="pokemon-card-name">${pokemon.name}</div>
@@ -42,32 +50,30 @@ window.addEventListener("load", () => {
   `;
   }
 
-  // fetchPokemons async function with a loop - when called the loop will pass a number to the fecthData function which is used for the fecth url end point
-  const fetchPokemons = async () => {
-    for (let i = startNum; i <= endNum; i++) {
-      const pokemonObj = await fetchData(i);
-      pokemonList[i] = pokemonObj;
-    }
-
-    return pokemonList
-  };
-
-  // fetchData function - gets the data from the poke api, the loop from the "fetchPokemons" function will pass in the number for the fecth url end point
+  /**
+   * @description - This fetches data from the API and returns the object
+   * @param {number} id - The ID of the Pokemon to fetch from the API
+   * @returns {Promise<object>}
+   */
   async function fetchData(id) {
     try {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       return await response.json();
     } catch (e) {
-      console.log("There was a problem fetching the pokemon data");
+      console.error("There was a problem fetching the pokemon data");
     }
   }
 
-  // create pokemon function - once the data has been fetched from the api, this function will create the HTML using the data
-  function createPokemon(pokemon) {
+  /**
+   * @description - Create a wrapper for the pokemon content
+   * @param {number} id - The ID of the pokemon reference
+   * @returns {void}
+   */
+  function createPokemon(id) {
     const pokemonCardEl = document.createElement("div");
     // Set data attribute to keep track of ID for this element
-    pokemonCardEl.dataset.id = pokemon.id;
-    pokemonCardEl.classList.add("pokemon-card", `pokemon-card-type-${pokemon.types[0].type.name}`);
+    pokemonCardEl.dataset.id = id;
+    pokemonCardEl.classList.add("pokemon-card");
 
     observer.observe(pokemonCardEl);
     pokemonGrid.appendChild(pokemonCardEl);
@@ -76,7 +82,6 @@ window.addEventListener("load", () => {
   // funtion to clear pokemon-grid, used for the generation click event
   function clearPokemonGrid() {
     pokemonGrid.innerHTML = "";
-    pokemonList = [];
   }
 
   // click events for the 1st generation button
@@ -104,10 +109,10 @@ window.addEventListener("load", () => {
   });
 
   async function init() {
-    const pokeList = await fetchPokemons();
-    pokeList.forEach((v, i) => {
-      createPokemon(v);
-    });
+    for(let i = startNum; i <= endNum; i++) {
+      // Create skeleton DOM Element to hold our pokement that hasn't loaded yet
+      createPokemon(i);
+    }
   }
 
   document.querySelector(".go-to-top").addEventListener("click", () => {
