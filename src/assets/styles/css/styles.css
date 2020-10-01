@@ -92,7 +92,8 @@ li {
 
 @font-face {
   font-family: "pokemon";
-  src: url("../../fonts/pokemon_solid-webfont.woff") format("woff2"), url("../../fonts/pokemon_solid-webfont.woff2") format("woff");
+  src: url("../../fonts/pokemon_solid-webfont.woff") format("woff2"),
+    url("../../fonts/pokemon_solid-webfont.woff2") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -179,6 +180,13 @@ li {
   -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   text-align: center;
+  min-height: 300px;
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.pokemon-card.visible {
+  opacity: 1;
 }
 
 .pokemon-card-img {
@@ -269,15 +277,6 @@ li {
 
 .fa-angle-up:hover {
   color: #fff;
-}
-
-.pokemon-card {
-  opacity: 0;
-  transition: all 1.5s ease-in-out;
-}
-
-.reveal-pokemon-card {
-  opacity: 1;
 }
 
 /*# sourceMappingURL=styles.css.map */
