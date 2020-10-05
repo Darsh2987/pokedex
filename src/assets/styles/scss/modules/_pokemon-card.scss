@@ -10,6 +10,13 @@
   -moz-box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
   text-align: center;
+  min-height: 300px;
+  transition: opacity 1.5s ease-in-out;
+  opacity: 0;
+}
+
+.pokemon-card.visible {
+  opacity: 1;
 }
 
 .pokemon-card-img {
