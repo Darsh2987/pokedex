@@ -1,4 +1,4 @@
-import "../styles/css/styles.css";
+import "../styles/scss/imports.scss";
 window.addEventListener("load", () => {
   const pokemonGrid = document.querySelector("#pokemon-grid");
 
@@ -10,13 +10,13 @@ window.addEventListener("load", () => {
    * Only load the data and render it when it's in view
    */
   const observer = new IntersectionObserver(async (entries) => {
-    entries.forEach(async entry => {
+    entries.forEach(async (entry) => {
       if (entry.isIntersecting && entry.target.dataset.loaded !== true) {
         // We know the ID of the element which is now in view
         const id = entry.target.dataset.id;
         // Grab data from API first using the ID
-        const pokeData = await fetchData(id);        
-        entry.target.classList.add('visible', `pokemon-card-type-${pokeData.types[0].type.name}`);
+        const pokeData = await fetchData(id);
+        entry.target.classList.add("visible", `pokemon-card-type-${pokeData.types[0].type.name}`);
         entry.target.innerHTML = fillPokemonData(pokeData);
         entry.target.dataset.loaded = true;
       }
@@ -24,8 +24,8 @@ window.addEventListener("load", () => {
   });
 
   /**
-   * 
-   * @param {object} pokemon 
+   *
+   * @param {object} pokemon
    * @description - Generate html for the pokemon object recieved
    */
   const fillPokemonData = (pokemon) => {
@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
       </div>
       <div class="pokemon-card-number">#${pokemon.id}</div>
   `;
-  }
+  };
 
   /**
    * @description - This fetches data from the API and returns the object
@@ -109,7 +109,7 @@ window.addEventListener("load", () => {
   });
 
   async function init() {
-    for(let i = startNum; i <= endNum; i++) {
+    for (let i = startNum; i <= endNum; i++) {
       // Create skeleton DOM Element to hold our pokement that hasn't loaded yet
       createPokemon(i);
     }
@@ -121,5 +121,4 @@ window.addEventListener("load", () => {
 
   // Initiate script
   init();
-
 });
